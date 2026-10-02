@@ -1,0 +1,52 @@
+                            modulo 1
+                        Introdução ao Python
+
+			(Preparando Ambiente)
+
+* criar pastas usando => uv init NomeDaPasta
+
+* criar ambiente virtual => uv venv
+
+* adicionar ruff => uv add ruff
+
+* usando o ruff pode fazer checagem do código => uv run ruf check
+* e assim ele apaga os códigos com erros => uv run ruf check --fix
+* usar esse comando para que o código ignore algum erro:
+[tool.ruff.lint]
+ignore = ["codigo do erro"]
+
+* fazer o ruff formatar o código e deixar ele limpo => uv run ruff format
+
+adicionar mypy => uv add mypy
+
+* usando o mypy para consertar o código => uv run mypy arquivo
+
+* sincronizar a venv com o Project.toml => uv sync
+
+* instar bibliotecas em ambientes de densenvolvedor => uv add --dev biblioteca
+
+
+				(Variáveis)
+
+* Espaços nomeados dentro da memoria RAM
+
+* Não comesse o nome de uma variável com caracteres e não use nome de comandos já existentes no python
+
+* Use letras minúsculas e separe palavras com o underline ex.: vida_jogador
+
+* Variáveis são mutáveis 
+
+(Tipos Primitivos)
+
+int = valores inteiros(7,-4,0,9875)
+float = volores flutuantes(4.5,0.076,-15.223,7.0)
+bool = valores verdadeiro ou falso(True,False){sempre escritos em MAISCULO}
+str = string('ola','7.5'){tudo entre parênteses}
+
+
+
+
+
+
+
+
