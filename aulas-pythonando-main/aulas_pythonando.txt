@@ -36,17 +36,221 @@ adicionar mypy => uv add mypy
 
 * Variáveis são mutáveis 
 
-(Tipos Primitivos)
+		(Tipos Primitivos)
 
 int = valores inteiros(7,-4,0,9875)
 float = volores flutuantes(4.5,0.076,-15.223,7.0)
 bool = valores verdadeiro ou falso(True,False){sempre escritos em MAISCULO}
 str = string('ola','7.5'){tudo entre parênteses}
 
+		(Operadores Aritméticos)
+
+(+ = soma)(- = subtração)(* = multiplicação)(/ = divisão)(** = potencia/pow = potencia)(// = divisão inteira)(% = resto da divisão)
+
+ordem de precedência
+1-(())
+2-(**)
+3-(*,/,//,%)
+4- (+, -)
+
+		(Operadores relacionados)
+
+(> = maior)(< = menor)(== = igual)(>= = maior ou igual)(<= = menor ou igual)(!= = diferente)
 
 
+		(operadores logicos)
+
+and => se os as duas condições forem verdadeira retorna um valor True 
+
+or => se apenas uma das condições forem verdadeira ele retorna um valor True
+
+not => se a minha condiçõe for falsa ele me retorna um valor True e se minha condiçõe for verdadeira ele me retorna um valor False
+
+		(Condições)
+
+if variavel():     {em uma condicional apenas uma das condicionais acontece}
+     bloco True
+else:
+     bloco False
+
+condicao simplificada:
+print("exemplo" if variavel x = x else "exemplo")
 
 
+		(Condições Aninhadas)
+
+if variavel():     {em uma condicional apenas uma das condicionais acontece}
+     bloco 1
+elif variavel():   {adiciona mais condicionas quantas vezes voce quiser}
+     bloco 2
+else:
+     bloco 3
+
+
+				(Estrutura de Repetição)
+
+		(for)
+
+for variavel in range(1,10): {repete o bloco 1 por quantas vezes voce decidir nos ()}
+     bloco 1
+
+bloco 2
+
+		(while)
+
+while not variavel: {repete o bloco 1 ate a variavel desejada}
+     bloco 1
+
+bloco 2 {bloco ja fora do laco de Repetição}
+
+		(break)
+                                  
+while not variavel: {repete o laço ate a variavel desejada}
+     if:
+          bloco 1
+
+     if: 
+          bloco 2
+
+     if:
+          bloco 3
+          break    {interrompe o o laço de repeticao e da sequencia ao codigo}
+
+bloco 4 {bloco ja fora do laco de Repetição}
+
+
+		(continue)
+
+difernte do break o continue volta o laco de repeticao para o incio ao inves de paralo
+
+				(Variaveis Compostas)
+
+		(Tuplas)
+
+Uma tupla é uma sequência ordenada de elementos ou valores agrupados em uma única estrutura.
+
+usamos () para escrever uma tupla
+e [] para referenciar
+
+* As TUPLAS são IMUTAVEIS
+
+tupla = ("variavel", "variavel", "variavel", "variavel")
+print(variavel[x:x:x]) {usando fatiamento}
+
+Pode se apagar uma tupla usando comando:
+
+del(tupla) {porem nao se pode uasar del para apagar algun elemento da tupla apenas ela inteira}
+del tupla(x) {NÃO FUNCIONA}
+
+exemplo:
+
+lanche = ("Hambúrguer", "Suco", "Pizza", "Pudim", "Batata frita")
+print(lanche[0]) retorna: Hambúrguer
+print(lanche[3]) retorna: Pudim
+
+
+		(listas)
+
+usmos [] para escrever uma listas
+
+* As listas são mutaveis
+
+como criar uma lista:
+lista = ["varavel", "variavel", "variavel"]
+list(variavel) {cria uma lista da variavel}
+
+como adicionar elementos na lista:
+
+lista[x] = "variavel" {substitui uma variavel por outra sendo o valor de "x"}
+lista.append("variavel"){adiciona uma variavel no final de uma lista}
+lista.insert(x, "variavel"){como adicionar uma variavel em qualquer lugar de uma lista, "x" = posição da variavel}
+
+como deletar listas e suas Variaveis:
+
+del(lista) {deletar a lista do codigo}
+del lista[x] {apagar uma variavl de uma lista na posição "x"}
+lista.pop(X) {apagar a variavel na posição "x" se nao tiver um valor ele apaga a ultima variavel da lista}
+lista.remove("variavel") {apagar a primeira variavel da lista e reorganiza os indixes da lista}
+lista.clear() {limpa alista mas não a apaga}
+
+*Caso tente apagar um item de uma lista e esse item não existir na lista o codigo dara um erro
+para evitar use um if. Como asseguir:
+
+if variavel in lista:
+     lista.remove("varavel")
+
+criando listas com range:
+
+lista = list(range(x,x)) {cria uma lista uando os valores "x" e "x"}
+
+listas dentro de listas:
+
+colocando listas dentro de listas:
+
+listas[[variavel 0, variavel 1], [variavel 0, variavel 1], [varavel 0, variavel 1]]
+print(lista[0][0]) {retorna a "variavel 0" da lista na posição 0}
+print(lista[2][1]) {retorna a "variavel 1" da lista na posição 2}
+print(lista[1]) {retorna as variaveis "variavel 0" e "variavel 1"  da lista na posição 1}
+
+sum(lista) {soma os valores dentro de uma lista}
+
+exemplo:
+
+galera = [["João", 19], ["Ana", 33], ["Joaquim", 50], ["Maria", 15]]
+print(galera[0][1]) retorna: 19
+print(galera[2][0]) retorna: Joaquim
+
+
+		(Dicionários)
+
+usamos '{}' para identificar dicionarios
+
+* Os dicionarios são mutaveis
+
+criando dicionarios:
+
+dicionario = dict()
+dicionario = {"X":'variavel', "X": 25} {salva variaveis dentro de indices literarios ao inves de indices numericos}
+
+adicionar indices e variaveis:
+
+dicionario["X"] = "variavel" {cria o indice desejado e coloca sua variavel dentro no final do dicionario}
+
+deletar variaveis em dicionarios:
+
+del dicionario["X"] {apaga o elemento dentro do dicionario}
+
+Buscar valores nos dicionarios:
+dicionario.get("elemento", "default") {mostra a variavel dentro do elemento do dicionario}
+					{caso não exista esse elento no dicionario ele mostra o valor default}
+
+
+Valor Chave e Itens:
+
+dicionario.values() {variaveis dentro dos elementos}
+dicionario.keys() {elementos dos dicionarios}
+dicionario.items() {mostra tanto os elementos quanto suas variaveis}
+
+exemplo:
+filme = {"titulo":"Star Wars", "Ano":"1977", "diretor":"George Lucas"}
+for k, v in filme.items():
+     print(f"O {k} é {v}") {retorna: O titulo é Star Wars
+                                     O Ano é 1977
+                                     O diretor é George Lucas}
+
+pode se ter dicionario dentro de listas:
+
+locadora = [{"titulo":"Star Wars", "Ano":"1977", "diretor":"George Lucas"}, {"titulo":"Matrix", "Ano":"1999", "diretor":"Wachowski"}]
+print(locadora[0]["Ano"]) retotna: 1977
+print(locadora[1]["titulo"]) retotna: Matrix
+
+criando copias de dicionarios:
+
+* diferente das listas que para criar uma copia de uma lista sem corelacionalos que se usava
+o metodo [:]. Os dicionarios são um pouco diferentes se tentar da mesma forma que as lista
+dara erro no codigo, tem que se uasar (.copy()):
+
+lista.append(dicionario.copy()) {metodo correto sem dar erro}
 
 
 
