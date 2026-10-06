@@ -66,6 +66,66 @@ or => se apenas uma das condições forem verdadeira ele retorna um valor True
 
 not => se a minha condiçõe for falsa ele me retorna um valor True e se minha condiçõe for verdadeira ele me retorna um valor False
 
+          (Modulos)
+* Um módulo Python é um arquivo com a extensão .py que contém código reutilizável, como funções, classes e variáveis.
+
+• organização: Dividem programas grandes em partes menores e mais fáceis de manter.
+• Reutilização: Evitam a repetição de código ao permitir importar funções já prontas em outros arquivos.
+• Escopo: Cada módulo possui seu próprio espaço de nomes (namespace), evitando conflitos entre variáveis.
+
+comandos:
+import {importa todo o modulo}  
+from X import X {importa algo especifico do modulo}
+
+instalar = pip install x { no terminal caso a biblioteca não esteja dentro da documentação do python}
+
+
+
+          (Manipular Texto)
+
+fatiamento:
+variavel[x:x:x]{aonde começa, aonde termina, pulando os micro espaços}
+
+analise:
+len(variavel) {mostra quantos micro espaços na variavel}
+variavel.count('x',x,x){mostra quantos caracteris iguais tem na variavel, aonde começa, aonde termina}
+variavel.find('x'){mostra aonde começa o cacter na variavel em uma string}
+variavel.index("variavl") {mostra o index da variavel em uma lista}
+'x' in variavel{mostra se tem  aquela cactere na variavel}
+varavel.replace('x','x'){substitui a primeira caracter pela segunda}
+variavel.upper(){coloca todas as caracteres por caracteres em maiusculas}
+variavel.lower(){coloca todas as caracteres por caracteres em minusculas}
+variavel.captaliza(){coloca a primeira caracter em maiuscula e o resto em minuscula}
+variavel.title(){coloca todas as primeiras letras de cada palavra em maiuscula}
+variavel,strip(){remove espaços inuteis no final e no inicio da frase}
+variavel.rstrip(){remmove so os espaços do direita}
+variavel.lstrip(){remmove so os espaços do esquerda}
+variavel.sort() {reorganiza uma variavel composta em ordem crescente ou alfabetica}
+variavel.sort(reverse = True) {reorganiza uma variavel composta em ordem porem ao contrario}
+
+divisão:
+variavel.split(){sepra em listas com todas as palavras dentro de uma cadeia de caracteres}
+
+junção:
+'-'.join(variavel){junta listas em uma unica variavel com o caracter antes do comando join}
+
+
+                           ANSI
+                    (escape sequencial)
+
+\033[X;X;Xm style;text;back m
+style:         /  text:            / back:
+0 = none       /  30 = branco      / 40 
+1 = bold       /  31 = vermelho    / 41
+4 = underline  /  32 = verde       / 42
+7 = negative   /  33 = amarelo     / 43
+               /  34 = azul        / 44
+               /  35 = roxo        / 45
+               /  36 = ciano       / 46
+               /  37 = cinza       / 47
+
+
+
 		(Condições)
 
 if variavel():     {em uma condicional apenas uma das condicionais acontece}
@@ -165,6 +225,20 @@ lista[x] = "variavel" {substitui uma variavel por outra sendo o valor de "x"}
 lista.append("variavel"){adiciona uma variavel no final de uma lista}
 lista.insert(x, "variavel"){como adicionar uma variavel em qualquer lugar de uma lista, "x" = posição da variavel}
 
+copiando listas:
+
+* Atenção caso tente copiar uma lista usando " = " você não ira copiala você ira corelacionalas:
+a = [1]
+b = a
+b[0] = [2]
+print(a)   {retorna: [2] / pois voce corelacionou as listas}
+
+* para corigir isso use o metodo [:] ou o comando .copy():
+a = [1]
+b = a[:]      ou  b = a.copy()
+b[0] = [2]
+print(a)   {retorna: [1]}
+
 como deletar listas e suas Variaveis:
 
 del(lista) {deletar a lista do codigo}
@@ -200,6 +274,15 @@ galera = [["João", 19], ["Ana", 33], ["Joaquim", 50], ["Maria", 15]]
 print(galera[0][1]) retorna: 19
 print(galera[2][0]) retorna: Joaquim
 
+          (List comprehension)
+
+* oferece uma sintaxe mais concisa quando você deseja criar uma nova lista com base nos valores de uma lista existente.
+
+list = [expression for c in iterable if condition == True]
+
+ex.:
+z = [i for i in range(10) if i > 4] {retorna: [5, 6, 7, ,8 , 9]}
+print(z)
 
 		(Dicionários)
 
@@ -251,6 +334,26 @@ o metodo [:]. Os dicionarios são um pouco diferentes se tentar da mesma forma q
 dara erro no codigo, tem que se uasar (.copy()):
 
 lista.append(dicionario.copy()) {metodo correto sem dar erro}
+
+          (conjuntos)
+
+* É uma coleção apenas de valores únicos (sem duplicatas), usada para guardar itens avulsos e fazer operações matemáticas como união e interseção.
+
+* Em um conjunto não existe valores repetidos.
+
+* cuidado: tambem se ultiliza {} para se refenciar os conjuntos como os dicionarios
+
+criando conjuntos:
+
+conjunto = set()
+* NÃO use {} para criar um conjunto pois você criara um dicionario
+
+comandos para conjuntos de dados:
+
+.union() {uni dois conjuntos}
+.intersection() {retorna os valores que se repetem entre 2 conjuntos}
+.difference()  {retorna os valores do primeiro conjunto que não se repetem no segundo conjunto}
+.symmetric_difference() {retorna os valores diferentes nos 2 conjuntos}
 
           (Funções)
 
@@ -510,3 +613,39 @@ except:
 except:
      falhou
 ....
+
+          (Raise)
+
+A raise KeyWord é usada para gerar uma exceção.
+
+raise ValueError ("deu merda") {pode se colocar qualquer mensagem para um erro especifico}
+
+exemplo:
+
+x = "hello"
+
+if not type(x) is int:
+  raise TypeError("Only integers are allowed") {retorna: a mensagem desejada}
+
+          (assert)
+
+A assert KeyWord que permite testar se uma condição no seu código retorna True; caso contrário, o programa lançará um AssertionError.
+
+Você pode escrever uma mensagem para ser exibida caso o código retorne False; veja o exemplo abaixo.:
+
+x = "welcome"
+assert x != "welcome", "x should not be 'welcome'" {retorna: a mensagem desejada}
+
+          (yield e next)
+
+* A yield KeyWord transforma uma função em um gerador de funções.
+
+* O gerador de funções retorna um iterador.
+
+* O código dentro da função não é executado na primeira chamada, mas sim dividido em etapas, uma etapa para cada `yield`, e cada etapa só é executada quando iterada.
+
+* Ao contrário da return KeyWord que interrompe a execução da função, a yield KeyWord retorna o resultado obtido até o momento e continua para a próxima etapa.
+
+* O valor retornado será uma lista de valores, um item para cada yield.
+
+next
