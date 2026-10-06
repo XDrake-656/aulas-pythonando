@@ -252,5 +252,261 @@ dara erro no codigo, tem que se uasar (.copy()):
 
 lista.append(dicionario.copy()) {metodo correto sem dar erro}
 
+          (Funções)
+
+* Todas as Funções do python são escritas com parênteses 'função()'
+
+para criar uma função usamos o comando (def):
+
+def função(): {voce cria uma nova função personalizada para seu codigo}
+     bloco1
+
+          (Interective Help)
+
+help() {mostra informaçoes sobre a função desejada}
+
+print(função.__doc__) {mostra a documentação do comando desejado}
+
+          (Docstrings)
+
+manual de uma função:
+para criar uma docstrings basta digitar o manual entre tres aspas duplas logo abaixo do comando def.
+def função(x,x,x):
+     """ documentação """
+     bloco 1
+
+help(função) retorna: documentação
+
+          (Call satck)
+Oque é :
+Sempre que invocamos uma função, dados do seu escopo interno (como variáveis e parâmetros) precisam ser salvos em algum local. Além disso, também precisamos saber quando a função retorna um valor para que o programa continue a seguir o seu fluxo. Tudo isso é gerenciado pela Call Stack (pilha de chamada ou pilha de execução).
+
+como funciona:
+De forma simples e direta, quando meu programa está em execução e encontra uma chamada de função, ele pausa temporariamente o que estava fazendo e vai até o código interno da função para realizar sua execução. Após a execução, a função precisa saber como retornar o programa para o local onde ele parou antes da chamada para a execução. Então, após o retorno da função, o programa sabe como resumir o código partindo exatamente de onde a função retornou.
+
+          (Parametros Opicionais)
+
+posso declarar Parametros Opicionais para as funcoes usando " = "
+
+def função(x = 0, x = 0, x = 0):
+     """doc"""
+     bloco 1
+função() {o programa pode funcionar mesmo sem Parametros ja que eles ja que ja possui Parametros ja declarados}
+
+          (Parametros tipos Primitivos)
+
+pode se declarar os tipos primitivos dos parametros tmb usando " : "
+
+def função(X : int, X : float, X : str, X : bool) {declara o tipo de variavel a ser recebida}
+     """doc"""
+     bloco1
+função() 
+
+* pode se definir um parametro opcional e definir seu tipo ao mesmo tempo:
+
+def função(X: int = 0, X: float = 0.0, X: string = "exemplo", X: bool = True):
 
 
+          (Funções recursivas)
+
+* Funções recursivas são funções que chamam a si mesmas de maneira direta ou indireta durante a execução para resolver pedaços menores de um problema.
+
+* Toda função recursiva precisa de dois componentes básicos para funcionar de forma correta:
+• (Caso base): A condição de parada que encerra as chamadas e evita um loop infinito.
+• (Passo recursivo): A chamada da função com um valor menor ou modificado que se aproxima do caso base.
+
+exemplo :
+
+def função(n):
+     bloco 1
+     return {#caso base}
+
+     return função(n - 1) {#caso recursivo}
+
+* Vantagens: Deixa o código mais limpo e elegante para resolver problemas complexos como estruturas de árvores ou "algoritmos de busca".
+
+* Cuidados: O uso incorreto ou a falta do caso base gera um erro de stack overflow (estouro de pilha) por esgotar a memória do computador.
+
+* Consumo de Memória alto. A cada chamada consome espaço na memória (Call Stack) até atingir o caso base ou o limite.
+
+* limite padrão de recursão (geralmente 1000 chamadas).
+     * Anão ser que seja modificado com o comando:
+     from sys import setrecursionlimit
+     setrecursionlimit(X) {x = valor do limir desejado} { CUIDADO OA USAR ESSE LIMITE EXISTE POR UM MOTIVO }
+
+
+* diferente das estruturas for/while que repetem um bloco de código na mesma linha de execução.
+A função recursiva cria uma nova cópia de si mesma na memória.
+
+Quando escolher qual?
+• Use for / while para 95% das tarefas do dia a dia (processar dados, ler arquivos, buscar itens em listas).
+• Use Recursividade quando o problema for naturalmente divisível em subproblemas idênticos, especialmente ao lidar com estruturas ramificadas (como ler arquivos dentro de subpastas do computador ou analisar dados em formato JSON complexo).
+
+exemplo :
+
+def fatorial(n: int) -> int:
+    #caso base: quando ele chegar ao valor de 1 ele continua o codigo
+    if n == 1:
+        return 1 
+    #caso recursivo: faz um loop salvando na memoria todos os valores da fatorial ate que ele retorne o return e volte o codigo ate calcular todos os valores salvos
+    return n * fatorial(n - 1)
+
+fat = fatorial(5)
+print(fat)
+
+          (Higher order functions)
+
+* Uma função que recebe e retorna outra função
+
+exemplo:
+
+def validar(x):
+     return x
+
+def soma(x, y):
+     return x + y
+
+print(validar) {Retona: a referencia de memoria}
+
+print(validar(soma)(2, 3)) {Retona: 5}
+
+          (Decoradores)
+
+Oque é:
+Decorators em Python são ferramentas que permitem modificar ou estender o comportamento de uma função ou método sem alterar diretamente o seu código original
+
+* A sintaxe utiliza o símbolo "@" logo acima da definição da função que você deseja modificar.
+
+exemplo:
+
+def validar(f):
+     def valida(x, y):
+          if x < 0 or y < 0:
+               raise ValueError("x e y nao podem ser negativos")
+          return f(x, y)
+     return valida
+
+@validar
+def soma(x, y):
+     return x + y
+
+print(soma(10, 20))
+
+          (args e kwargs)
+
+* args e kwargs permitem que uma função aceite um numero flexivel e ilimitado de argumentos.
+
+* args coletam argumentos posicionais extras em uma tupla usando " * "
+
+* kwargs coleta argumentos nomeados extras em um dicionario usando " ** "
+
+args exemplo:
+def somar(*n): {pode se receber quantos valores quiser sem definir um numero exato}
+     return sum(n)
+print(somar(1,2,3)) {saida : 6}
+
+kwargs exemplo:
+def exibir_dados(**dict): {agrupa todos os argumentos passados com nome em um dicionario}
+     for keys, value in dict.items():
+          print(f"{keys}: {value}")
+exibir_dados(nome = "Ana", idade=25) {retorna: 
+                                        nome : Ana
+                                        idade : 25  
+                                        }
+
+          (Escopo de Variáveis)
+
+variavel global = {por mais que seja declarada fora de uma função ela faz parte do programa principal}
+
+variavel local = {reconhece os valores apenas aonde foram declarados}
+
+exemplo:
+def teste(b):
+     b+= 4
+     c = 2  {escopo local:a = 5, b = 9 e c = 2
+               reconhece todos os valares inclusive o valor a mesmo que seja declarado fora
+                da função ja que o valor a é reconhecido como valor global}
+
+a = 5
+teste(a) {escopo global: a = 5
+               reconhece apenas o valor de a ja que ele era o unico valor no escopo global}
+
+* CUIDADO caso um variavel seja declarada no escopo local ela passa ser uma outra variavel
+exemplo:
+def teste(b):
+     a = 8
+     b+= 4
+     c = 2  {escopo local:a = 8, b = 9 e c = 2}
+
+a = 5
+teste(a) {escopo global: a = 5
+               variavel a continua valendo 5 mesmo que na função ele tenha recebido outro valor}
+
+caso queira que o a local seja considerado o a variavel global use o comando:
+(global variavel)
+
+exemplo:
+def teste(b):
+     global a
+     a = 8
+     b+= 4
+     c = 2  {escopo local:a = 8, b = 9 e c = 2}
+
+a = 5
+teste(a) {escopo global: a = 8
+               variavel mudou de valor ja que mesmo localmente voce fez o python considerar ela
+               globalmente}
+
+          Retornando valores
+               (return)
+
+def função(a,b,c):
+     X = a + b + c 
+     return X      {faz com que ele retorne o valor de X}
+
+variavl = função(a,b,c)
+
+
+
+                         (Tratamento de Erro)
+
+          (Erro)
+
+erros de sintaxe no programa exemplo: 
+primt(X) <= erro
+print(x) <= correto
+
+          (Exceção)
+
+Exceçãos são quando um programa não necessariamente tem erros de sintaxe, mas o codigo apresenta erro quando ele recebe um valor não valido
+exemplo:
+n = int(input("Digite um numero: ")) 
+
+* O programa pode dar um erro caso o usuario digite "oito" ou inves de digitar "8" assim dando erro: ValueError
+pois o programa esperava receber uma variavel de valor inteiro e não uma variavel do tipo string
+
+* Podemos usar o comando exception para ver o tipo de erro no codigo
+
+* Podemos usar o comando try para fazer o programa tentar fazer algo ao inves de fazer. Exemplo:
+
+try:
+     operação
+
+except:
+     falhou
+else:
+     deu certo
+finally:
+     certo/falha
+
+* Lembrando que se pode ter varios comandos except no mesmo try:
+
+try:
+     operação
+except:
+     falhou
+except:
+     falhou
+except:
+     falhou
+....
