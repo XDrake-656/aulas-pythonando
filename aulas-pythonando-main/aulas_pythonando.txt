@@ -354,7 +354,9 @@ modulo 1
 
                * Todas as Funções do python são escritas com parênteses 'função()'
 
-               para criar uma função usamos o comando (def):
+               * para criar uma função usamos o comando (def):
+
+               * PEP 8: para criar uma função de acordo com a pep não use letras maiusculas e separe as palavras por '_' ex.: minha_funcao()
 
                def função(): {voce cria uma nova função personalizada para seu codigo}
                     bloco1
@@ -859,3 +861,90 @@ modulo 1
                          dumps()	Return a pickled representation of obj as bytes.
                          load()	Read a pickled object from a file-like object.
                          loads()	Read a pickled object from a bytes-like object.
+     
+     
+     Orientação a objetos
+
+          Python é uma linguagem orientada a objetos, permitindo que você estruture seu código usando classes e objetos para melhor organização e reutilização.
+
+          * Fornece uma estrutura clara para os programas
+          * Torna o código mais fácil de manter, reutilizar e depurar
+          * Ajuda a manter seu código SECO (Não se repita)
+          * Permite que você crie aplicativos reutilizáveis com menos código
+          * Dica: O princípio DRY significa que você deve evitar escrever o mesmo código mais de uma vez. Mova código repetido para funções ou classes e reutilize-o.
+
+          O que são Classes e Objetos?
+          Classes e objetos são os dois conceitos centrais da programação orientada a objetos.
+
+          Uma classe define como um objeto deve ser, e um objeto é criado com base nessa classe. Por exemplo:
+
+          Classe	Objetos
+          Fruta	Maçã, Banana, Manga
+          Carro	Volvo, Audi, Toyota
+
+          Quando você cria um objeto a partir de uma classe, ele herda todas as variáveis e funções definidas dentro dessa classe.
+
+               (Class)
+
+                    Quase tudo em Python é um objeto, com suas propriedades e métodos.
+                    Uma classe é como um construtor de objetos ou um "blueprint" para criar objetos.
+
+                    * PEP 8 nome das classes sempre com a primeiraletra de cada plavara em maiuscula ex.: MinhaClasse 
+
+                    * Para criar uma classe, use a KeyWord class:
+                    class MinhaClasse:
+                         x = 5
+
+               (__init__)
+
+                    * Todas as classes possuem um método integrado chamado __init__(), que é sempre executado quando a classe está sendo iniciada.
+
+                    * O __init__() O método é usado para atribuir valores às propriedades do objeto ou para executar operações necessárias quando o objeto está sendo criado.
+
+                    * Usando __init__() facilita a criação de objetos com valores iniciais(pode definir valores padrão):
+
+                    *O __init__() o método pode ter quantos parâmetros você precisar:
+                    ex.:
+                    class Person:
+                         def __init__(self, name, age, cpf):
+                              self.name = name
+                              self.age = age
+                              self.cpf = cpf
+                    
+                    * Sem o __init__() método, você precisaria definir propriedades manualmente para cada objeto:
+                    ex.:
+                    class Person:
+                         pass
+
+                    p1 = Person()
+                    p1.name = "Tobias"
+                    p1.age = 25
+                    p1.cpf = 36257154
+
+                    * Você pode adicionar novas propriedades a objetos existentes:
+                    class Person:
+                         def __init__(self, name):
+                              self.name = name
+
+                    p1 = Person("Tobias")
+
+                    p1.age = 25
+                    p1.city = "Oslo"
+
+                    print(p1.name)
+                    print(p1.age)
+                    print(p1.city)
+                         
+               (self)
+
+                    * É usado para acessar propriedades e métodos que pertencem à classe.
+
+                    * É usado para acessar propriedades e métodos que pertencem à classe.
+                    
+                    * Não precisa ser nomeado auto, você pode chamá-lo como quiser, mas ele tem que ser o primeiro parâmetro de qualquer método na classe:
+                    class Person:
+                         def __init__(myobject, name, age):
+                         myobject.name = name
+                         myobject.age = age
+               
+

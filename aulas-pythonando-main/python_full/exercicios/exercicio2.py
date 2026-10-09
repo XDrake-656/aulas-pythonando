@@ -1,5 +1,5 @@
-salario = float(input("Quanto você recebe por hora: R$"))
-hora = float(input("Quantas horas voce Trbalhou esse mes: "))
+salario = float(input())
+hora = float(input())
 ganho_mes = (hora * salario) // 1
 imposto = ganho_mes * 11 / 100
 inss = ganho_mes * 8 / 100
