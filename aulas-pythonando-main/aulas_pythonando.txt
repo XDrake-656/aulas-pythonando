@@ -938,13 +938,97 @@ modulo 1
                (self)
 
                     * É usado para acessar propriedades e métodos que pertencem à classe.
-
-                    * É usado para acessar propriedades e métodos que pertencem à classe.
                     
-                    * Não precisa ser nomeado auto, você pode chamá-lo como quiser, mas ele tem que ser o primeiro parâmetro de qualquer método na classe:
+                    * Não precisa ser nomeado self, você pode chamá-lo como quiser, mas ele tem que ser o primeiro parâmetro de qualquer método na classe:
                     class Person:
                          def __init__(myobject, name, age):
                          myobject.name = name
                          myobject.age = age
-               
 
+               (propriedades de classe)
+
+                    * Em Python, atributos de classe são variáveis compartilhadas por todas as instâncias (objetos) criadas a partir de uma mesma classe.
+
+                    * Definição: São declarados diretamente no corpo da classe, fora de qualquer método (geralmente no início da classe).
+
+                    * Compartilhamento: O valor é único e compartilhado por todos os objetos gerados por essa classe. Se você alterar o atributo na própria classe, ele reflete em todas as instâncias que não o sobrescreveram.
+
+                    * Acesso: Podem ser acessados tanto pela própria classe (NomeDaClasse.atributo) quanto pelas instâncias (objeto.atributo).
+
+                    oque se pode fazer:
+                    • Você pode modificar o valor das propriedades nos objetos.
+                    • Você pode excluir propriedades de objetos usando o del.
+                    • Propriedades definidas dentro __init__() pertencem a cada objeto (propriedades da instância).
+                    • Propriedades definidas fora dos métodos pertencem à própria classe (propriedades da classe) e são compartilhadas por todos os objetos.
+                    • Quando você modifica uma propriedade de classe, ela afeta todos os objetos.
+                    • Você pode adicionar novas propriedades a objetos existentes.
+
+                    class Person:
+                         lastname = "Wilson"                      {define uma propriedade dentro da classe que afeta todos os objetos dentro dela}
+                         def __init__(self, name, age):
+                              self.name = name
+                              self.age = age
+
+                    p1 = Person("Tobias", 25)
+                    p2 = person("Linus", 40)
+                    print(p1.lastname)                      {retorna: wilson}
+                    print(p2.lastname)                      {retorna: wilson}
+
+                    print(p1.age)                           {retorna: 25}
+                    p1.age = 30                             {muda uma das propriedades de p1}
+                    print(p1.age)                           {retorna: 30}
+
+                    del p1.age                              {deleta uma das propriedades}
+                    print(p1.age)                           {retorna: AttributeError: 'Person' object has no attribute 'age'}
+
+                    Person.lastname = "Ronaldo"             {muda a propriedade dentro da classe}
+                    print(p1.lastname)                      {retorna: Ronaldo}
+                    print(p2.lastname)                      {retorna: Ronaldo}
+
+                    p1.lastname = "Alonso"                  {muda a propriedade apenas de p1}
+                    print(p1.lastname)                      {retorna: Alonso}
+                    print(p2.lastname)                      {retorna: Ronaldo}
+
+                    p1.city = "Orlando"                     {cria uma novo propriedade dentro  do objeto p1}
+                    print(p1.city)                          {retorna: Orlando}
+
+               (Python Magic Methods)
+                    
+                    * Os métodos mágicos são métodos especiais cujos nomes começam e terminam com sublinhados duplos, como __init__() e __str__(). Por causa dos sublinhados duplos, eles também são chamados métodos de dunder
+                    
+                    * Você não chama métodos mágicos diretamente. Python os chama para você, automaticamente, em certas situações - como quando um objeto é criado, impresso ou comparado a outro objeto.
+
+                    * metodos e suas descrições
+
+                    (Metodo)	           (chamado por)                         (descrição)
+                    __init__()	          Person(...)	               É executado quando um novo objeto é criado
+                    __str__()	               print(obj), str(obj)          Controla o texto legível mostrado para um objeto
+                    __repr__()	          repr(obj)	                    Controla a representação voltada para o desenvolvedor
+                    __eq__()	               obj1 == obj2	               Controla o que "igual" significa para a classe
+                    __add__()	               bj1 + obj2	               Controla o que o + operador faz
+                    __len__()	               len(obj)	                    Retorna o "comprimento" de um objeto
+                    __lt__()	               obj1 < obj2	               Controla como os objetos são ordenados quando comparados ou classificados
+                    __contains__()	          item in obj                   Controla o que o em verificações do operador
+                    __call__()	          obj(...)	                    Permite que um objeto seja chamado como uma função
+
+               (`@classmethod`)
+
+                    * Pertence à classe em si, e não a uma instância individual. É marcado com o decorador `@classmethod`.
+
+                    Como funciona: Recebe a própria classe como primeiro parâmetro, chamado por convenção de `cls`. É muito usado para criar construtores alternativos (*factory methods*).
+                    exempol.:
+                    class Person:
+                         current_year = 2026
+
+                         def __init__(self, name, age):
+                              self.name = name
+                              self.age = age
+
+                         @classmethod
+                         def for_birth_year(cls, name, birth_year):
+                              age = cls.current_year - birth_year
+                              return cls(name, age)
+
+
+                    p = Person.for_birth_year('Ana', 2000)
+                    print(p.age)                            # Saída: 26
