@@ -1013,7 +1013,9 @@ modulo 1
 
                (`@classmethod`)
 
-                    * Pertence à classe em si, e não a uma instância individual. É marcado com o decorador `@classmethod`.
+                    * Pertence à classe em si, e não a uma instância individual.
+
+                    * É marcado com o decorador `@classmethod`.
 
                     Como funciona: Recebe a própria classe como primeiro parâmetro, chamado por convenção de `cls`. É muito usado para criar construtores alternativos (*factory methods*).
                     exempol.:
@@ -1032,3 +1034,29 @@ modulo 1
 
                     p = Person.for_birth_year('Ana', 2000)
                     print(p.age)                            # Saída: 26
+
+               (`@staticmethod`)
+
+                    * Em Python, um método estático é um método que pertence a a classe mas não opera em uma instância ou na classe em si.
+
+                    * É marcado com o decorador "@staticmethod".
+
+                    * Os métodos estáticos não recebem uma resposta implícita auto ou CLS argumento. Isso significa que eles não podem acessar ou modificar a instância atributos ou atributos de classe.
+
+                    * usase métodos estáticos para utilidade funções que logicamente pertencem a uma classe, mas não exigem acesso a nenhuma instância ou dados em nível de classe.
+
+                    exemplo:
+                    class Person:
+                         @staticmethod
+                         def is_adult(age):
+                              return True if age > 18 else False
+
+                    print(Person.is_adult(20)) {retorna: True}
+                    print(Person.is_adult(15)) {retorna: False}
+
+     Model-View-Controller
+            (MVC)
+
+          • Modelo: Gerencia os dados, consultas de banco de dados e lógica de negócios bruta. Não tem consciência de como as informações são exibidas.
+          • Ver: Lida com a câmera de apresentação e uma interface do usuário. Ele exibe dados ao uso e captura interações, evitando-as de volta como entrada bruta.
+          • Controlador: Atua como cérebro e intermediário. Ele recebe informações da Visualização, atualiza o Modelo, recupera dados processados do Modelo e comanda a Visualização sobre o que exibir.
