@@ -19,7 +19,3 @@ start = matrix[colunm_start][row_start]
 current_position = start
 exit = matrix[colunm_exit][row_exit]
 last_postition = current_position
-
-while start != 0:
-    
-    
