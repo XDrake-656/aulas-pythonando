@@ -1,3 +1,6 @@
+# flake8: noqa: N999
+# ruff: noqa: N999
+
 class Person:
     lastname = "Barros"
     current_year = 2026

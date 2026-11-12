@@ -1,4 +1,4 @@
-from pympler.asizeof import asizeof
+from pympler.asizeof import asizeof  # noqa: N999
 
 
 def dobro(lista):

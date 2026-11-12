@@ -379,10 +379,13 @@ modulo 1
 
                (Call satck)
                     Oque é :
-                    Sempre que invocamos uma função, dados do seu escopo interno (como variáveis e parâmetros) precisam ser salvos em algum local. Além disso, também precisamos saber quando a função retorna um valor para que o programa continue a seguir o seu fluxo. Tudo isso é gerenciado pela Call Stack (pilha de chamada ou pilha de execução).
+                    Sempre que invocamos uma função, dados do seu escopo interno (como variáveis e parâmetros) precisam ser salvos em algum local. Além disso, também precisamos saber 
+                    quando a função retorna um valor para que o programa continue a seguir o seu fluxo. Tudo isso é gerenciado pela Call Stack (pilha de chamada ou pilha de execução).
 
                     como funciona:
-                    De forma simples e direta, quando meu programa está em execução e encontra uma chamada de função, ele pausa temporariamente o que estava fazendo e vai até o código interno da função para realizar sua execução. Após a execução, a função precisa saber como retornar o programa para o local onde ele parou antes da chamada para a execução. Então, após o retorno da função, o programa sabe como resumir o código partindo exatamente de onde a função retornou.
+                    De forma simples e direta, quando meu programa está em execução e encontra uma chamada de função, ele pausa temporariamente o que estava fazendo e vai até o código 
+                    interno da função para realizar sua execução. Após a execução, a função precisa saber como retornar o programa para o local onde ele parou antes da chamada para a execução. 
+                    Então, após o retorno da função, o programa sabe como resumir o código partindo exatamente de onde a função retornou.
 
                (Parametros Opicionais)
 
@@ -440,7 +443,8 @@ modulo 1
 
                     Quando escolher qual?
                     • Use for / while para 95% das tarefas do dia a dia (processar dados, ler arquivos, buscar itens em listas).
-                    • Use Recursividade quando o problema for naturalmente divisível em subproblemas idênticos, especialmente ao lidar com estruturas ramificadas (como ler arquivos dentro de subpastas do computador ou analisar dados em formato JSON complexo).
+                    • Use Recursividade quando o problema for naturalmente divisível em subproblemas idênticos, especialmente ao lidar com estruturas ramificadas 
+                    (como ler arquivos dentro de subpastas do computador ou analisar dados em formato JSON complexo).
 
                     exemplo :
 
@@ -688,7 +692,8 @@ modulo 1
 
                     * O resultado de iter([1, 2, 3]), Geradores.
 
-                    * Iteradores são descartáveis ("esgotáveis"): Uma vez que você percorreu um iterador até o final usando next(), ele fica vazio. Se tentar usá-lo de novo, ele continuará lançando StopIteration. Para ler os dados novamente, você precisa criar um novo iterador ou adicionar um valor de retorno padrão.
+                    * Iteradores são descartáveis ("esgotáveis"): Uma vez que você percorreu um iterador até o final usando next(), ele fica vazio. Se tentar usá-lo de novo, ele continuará lançando StopIteration. Para ler os dados novamente, 
+                    você precisa criar um novo iterador ou adicionar um valor de retorno padrão.
 
                Como eles trabalham juntos (O segredo do laço for):
                     Quando você escreve um como este:
@@ -1060,3 +1065,132 @@ modulo 1
           • Modelo: Gerencia os dados, consultas de banco de dados e lógica de negócios bruta. Não tem consciência de como as informações são exibidas.
           • Ver: Lida com a câmera de apresentação e uma interface do usuário. Ele exibe dados ao uso e captura interações, evitando-as de volta como entrada bruta.
           • Controlador: Atua como cérebro e intermediário. Ele recebe informações da Visualização, atualiza o Modelo, recupera dados processados do Modelo e comanda a Visualização sobre o que exibir.
+
+
+     Banco de Dados
+          (BD)
+
+          * Um banco de dados é uma coleção organizada de informações ou dados estruturados, armazenada e acessada de forma eletrônica por meio de um sistema de computador.
+
+          * Para gerenciar, consultar e proteger essas informações, utiliza-se um SGBD (Sistema Gerenciador de Banco de Dados), que é o software responsável por intermediar o acesso aos dados.
+
+          * Normalmente os bancos de dados são criados em C ou C++.
+
+          * SQL => Linguagem padrão: Utilizam a SQL (Structured Query Language) para consultas e manipulações.
+
+          APP <===> SGBD <===> arquivo
+                ^
+               SQL
+          
+          (ACID)
+
+                    A           C            I           D 
+               Atomicity | Concistency | Isolation | Durability
+
+               As propriedades ACID (Atomicidade, Consistência, Isolamento e Durabilidade) constituem o alicerce teórico que garante a confiabilidade das transações em sistemas de gerenciamento de
+               bancos de dados SGBDs.
+
+               * Transações => Uma transação representa uma sequência de operações que devem ser tratadas como uma unidade lógica indivisível. Em sistemas financeiros, por exemplo, uma transferência entre contas
+               envolve múltiplas operações: verificação de saldo, débito na origem e crédito no destino. A falha em qualquer etapa exigiria a reversão completa do processo para evitar inconsistências.
+
+               (Atomicidade)
+               O Princípio do "Tudo ou Nada"
+                    
+                    * A atomicidade assegura que uma transação seja concluída integralmente ou revertida sem
+                    deixar vestígios parciais. Isso é implementado através de:
+
+                    Caso Prático: Sistema de Reservas Aéreas
+
+                    Ao reservar um assento, o SGBD deve atualizar simultaneamente a disponibilidade do voo e o
+                    histórico do usuário. Se o pagamento falhar após a reserva, a atomicidade garante que nenhum
+                    dos registros seja persistido.
+
+               (Consistência)
+               Mantendo Estados Válidos
+
+                    Regras e Restrições
+
+                    * A consistência exige que toda transação transforme o banco de dados de um estado válido para outro, respeitando:
+                         Constraints de integridade: Chaves primárias, estrangeiras e verificações de domínio.
+                         Regras de negócio: Validações personalizadas, como saldo mínimo em contas bancárias.
+                    
+                    Caso Prático: Plataforma de E Commerce
+
+                    Ao finalizar uma compra, o sistema verifica estoque, processa o pagamento e gera um número de rastreamento. A consistência impede que o estoque seja reduzido sem a confirmação do
+                    pagamento, evitando vendas fantasmas.
+
+               (Isolamento) 
+               Gerenciando Concorrência
+
+                    Niveis de Isolamento
+                    * O isolamento controla como transações simultâneas interagem, utilizando técnicas como:
+
+                    Problemas de concorrencia
+
+                    Dirty read: Leitura de dados não confirmados de outra transação.
+                    Non-repeatable read: Dados alterados durante leituras repetidas.
+                    Phantom read: Novos registros surgindo entre leituras.
+               
+               (Durabilidade) 
+               Garantia de Persistência
+
+                    * Garante que após salvos os dados vão estar sempre disponíveis
+
+                    A durabilidade é alcançada através de:
+
+                    Write-ahead logging WAL : Registra alterações em disco antes da confirmação.
+                    Replicação síncrona: Armazena cópias em múltiplos nós simultaneamente.
+                    Dispositives não voláteis NVMe : Reduzem a janela de perda de dados.
+
+                    Cenário de Falha: Sistema Hospitalar
+
+                    Em um apagão durante a atualização de prontuários médicos, a durabilidade assegura que os dados já confirmados sejam recuperados integralmente após o reinício do sistema.
+
+
+          (Estrutura de um Banco de Dados)
+
+               * Um banco de dados é organizado para armazenar dados de forma estruturada e eficiente, facilitando consultas e manutenção.
+
+               (Banco de Dados)
+
+                    * É o contêiner principal que armazena todas as informações. 
+                    * Dentro dele, existem várias tabelas, cada uma representando um conjunto específico de dados relacionados.
+               
+               (Tabelas)
+
+                    * Uma tabela é como uma planilha, composta por colunas e linhas.
+                    * Cada tabela representa uma entidade ou assunto, por exemplo: Clientes, Produtos, Pedidos
+
+               (Colunas)
+
+                    * As colunas definem os atributos ou características da entidade.
+                    * Cada coluna tem um tipo de dado específico (texto, número, data, etc.).
+                    * Exemplo de colunas em uma tabela Clientes: id, email, nome.
+               
+               (Linhas)
+
+                    * Cada linha representa um registro único, ou seja, uma instância da entidade.
+                    * Exemplo: um cliente específico com seus dados preenchidos em cada coluna.
+
+               (Chave Primaria)
+
+                    * Uma coluna (ou conjunto de colunas) que identifica unicamente cada registro na tabela.
+                    * Exemplo: ID_Cliente é a chave primária da tabela Clientes.
+
+               (Relacionamento Entre Tabelas)
+
+                    * As tabelas podem se relacionar entre si para representar associações reais.
+                    * Exemplos de relacionamentos:
+                         ° Um para um 1 1
+                         ° Um para muitos 1 N
+                         ° Muitos para muitos N N , geralmente implementado com tabelas associativas.
+
+
+               banco de dados exemplo:
+
+                    Author                        |              Livros
+               id | Nome | EMAIL                  | id | Livo          | id_author
+                1 | Caio | email@gmail.com        |  1 | python basico |        1        
+                2 | Pedro| pedro@gmail.com        |
+
+               

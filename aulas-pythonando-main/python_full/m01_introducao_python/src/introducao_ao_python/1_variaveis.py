@@ -1,3 +1,4 @@
+# noqa: N999
 vida_jogador = 100
 nome_jogador = "Aloy"
 dano = 20
