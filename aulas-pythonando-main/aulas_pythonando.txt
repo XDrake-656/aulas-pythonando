@@ -1193,4 +1193,14 @@ modulo 1
                 1 | Caio | email@gmail.com        |  1 | python basico |        1        
                 2 | Pedro| pedro@gmail.com        |
 
+          
+          (SQLite e SQL)
+
+              SQLite é um banco de dados leve, que armazena os dados em um único arquivo, ideal paraaplicações 
+              pequenas e testes. Ele suporta comandos SQL padrão para criação, inserção e consulta de dados 1 . 
+
+              * criando tabelas com:
+              CREATE TABLE IF NOT EXISTS nome (
+               coluna
                
+              )
