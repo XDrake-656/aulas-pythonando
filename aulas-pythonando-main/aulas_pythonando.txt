@@ -1201,6 +1201,12 @@ modulo 1
 
               * criando tabelas com:
               CREATE TABLE IF NOT EXISTS nome (
-               coluna
-               
+               coluna_nome
               )
+
+              * adicionando informações nas tabelas:
+              INSEERT INTO nome(coluna_nome) VALUE(dados)
+
+              * consultando dados das tabelas:
+              SELECT coluna_nome FROM nome {pode se usar * no lugar de coluna_nome pare se pegar todas as informaçoes das tabelas}
+              
