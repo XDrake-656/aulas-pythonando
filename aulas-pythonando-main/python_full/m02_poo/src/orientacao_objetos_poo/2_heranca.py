@@ -5,7 +5,7 @@ class Person: #criar uma classe
     def talk(self):
         print("I'm talking")
         
-class Customer(Person): #criar uma classe com a erance de outra classe
+class Customer(Person): #criar uma classe com a herance de outra classe
     
     def buy(self):
         print("I'm buying")
